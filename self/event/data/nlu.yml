@@ -6,6 +6,11 @@ nlu:
     - 本地的
     - 当地的
 
+- synonym: 外地人
+  examples: |
+    - 外地的
+    - 外来的
+
 - synonym: 本人
   examples: |
     - 自己
@@ -39,9 +44,12 @@ nlu:
 - intent: apply_event
   examples: |
     - 我要办身份证
+    - [本地人](local_person),[中国的](country_person)，怎么办理身份证
+    - [外地的](local_person),[中国的](country_person)，怎么办理身份证
     - 办张身份证，[外地人](local_person)
     - 办张身份证，[本地人](local_person)
-    - 外地户口如何办理身份证
+    - [外地户口](local_person)如何办理身份证
+    - [本地户口](local_person)，如何办理身份证
     - 怎么办理身份证
     - 如何办身份证
     - 在[南京](city)，怎么办身份证
@@ -119,7 +127,7 @@ nlu:
 
 - intent: bot_challenge
   examples: |
-    - 你是机器人?
+    - 你是机器人吗?
     - 你是真人吗?
     - 我是在和一个机器人说话吗?
     - 我是在和真人说话吗?

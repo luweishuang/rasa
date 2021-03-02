@@ -1,8 +1,8 @@
 version: "2.0"
 intents:
-  - apply_event
   - chitchat:
       use_entities: []        #  忽略该意图消息对应的实体
+  - apply_event
   - inform
   - affirm
   - deny
@@ -53,11 +53,9 @@ responses:
   utter_submit:
   - text: "好的!"
   utter_slots_values_local:
-    - text: "是这样的，亲，对于办理身份证，您是:{country_person}并且是{person}办理，\n
-             - 您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
+    - text: "是这样的，亲，对于办理身份证，您是:{country_person}并且是{person}办理，您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
   utter_slots_values_nonlocal:
-  - text: "是这样的，亲，对于办理身份证，您是:{country_person}并且是{person}办理，而且带了{book}的话，\n
-          - 您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
+  - text: "是这样的，亲，对于办理身份证，您是:{country_person}并且是{person}办理，而且带了{book}的话，您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
   utter_noworries:
     - text: "很高兴为您服务，祝您生活愉快"
   utter_ask_continue:
@@ -90,7 +88,6 @@ forms:
     country_person:
     - entity: country_person
       type: from_entity
-      intent: [inform, apply_event]
     local_person:
     - entity: local_person
       type: from_entity
