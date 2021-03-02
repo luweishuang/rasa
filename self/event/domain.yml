@@ -1,9 +1,8 @@
 version: "2.0"
 intents:
-  - apply_event:
-      use_entities: []        #  忽略该意图消息对应的实体
+  - apply_event
   - chitchat:
-      use_entities: []
+      use_entities: []        #  忽略该意图消息对应的实体
   - inform
   - affirm
   - deny
@@ -46,7 +45,7 @@ responses:
   utter_ask_local_person:
     - text: "请问您是本地人还是外地人?"
   utter_ask_person:
-    - text: "请问您是本人还是委托人?"
+    - text: "请问您是本人办理还是委托人?"
   utter_ask_book:
     - text: "请问您是带了居住证还是户口本?"
   utter_ask_country_person:
@@ -54,16 +53,11 @@ responses:
   utter_submit:
   - text: "好的!"
   utter_slots_values_local:
-    - text: "是这样的，亲，对于办理身份证，您是:
-             - country_person: {country_person}并且是
-             - person: {person}办理，
+    - text: "是这样的，亲，对于办理身份证，您是:{country_person}并且是{person}办理，\n
              - 您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
   utter_slots_values_nonlocal:
-  - text: "是这样的，亲，对于办理身份证，您是:
-             - country_person: {country_person}并且是
-             - person: {person}办理，而且带了
-             - book: {book}的话，
-             - 您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
+  - text: "是这样的，亲，对于办理身份证，您是:{country_person}并且是{person}办理，而且带了{book}的话，\n
+          - 您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
   utter_noworries:
     - text: "很高兴为您服务，祝您生活愉快"
   utter_ask_continue:
@@ -84,7 +78,7 @@ responses:
     - text: "重启中"
 
 actions:
-- validate_restaurant_form
+- validate_event_form
 
 
 forms:
@@ -96,7 +90,7 @@ forms:
     country_person:
     - entity: country_person
       type: from_entity
-      intent: [inform, request_restaurant]
+      intent: [inform, apply_event]
     local_person:
     - entity: local_person
       type: from_entity
