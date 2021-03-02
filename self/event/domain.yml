@@ -1,0 +1,110 @@
+version: "2.0"
+intents:
+  - apply_event:
+      use_entities: []        #  忽略该意图消息对应的实体
+  - chitchat:
+      use_entities: []
+  - inform
+  - affirm
+  - deny
+  - stop
+  - thankyou
+  - greet
+  - bot_challenge
+  - who_are_u
+
+
+entities:
+  - city               # 城市
+  - local_person       # 本地人 外地人
+  - person             # 本人   委托人
+  - book               # 居住证  户口本
+  - country_person     # 中国人 外国人
+
+slots:
+  local_person:
+    type: text
+    influence_conversation: false   # 不影响对话流程
+    auto_fill: false
+  person:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  book:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  country_person:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  requested_slot:
+    type: text
+    influence_conversation: false
+
+responses:
+  utter_ask_local_person:
+    - text: "请问您是本地人还是外地人?"
+  utter_ask_person:
+    - text: "请问您是本人还是委托人?"
+  utter_ask_book:
+    - text: "请问您是带了居住证还是户口本?"
+  utter_ask_country_person:
+    - text: "请问您是中国人还是外国人?"
+  utter_submit:
+  - text: "好的!"
+  utter_slots_values_local:
+    - text: "是这样的，亲，对于办理身份证，您是:
+             - country_person: {country_person}并且是
+             - person: {person}办理，
+             - 您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
+  utter_slots_values_nonlocal:
+  - text: "是这样的，亲，对于办理身份证，您是:
+             - country_person: {country_person}并且是
+             - person: {person}办理，而且带了
+             - book: {book}的话，
+             - 您先去所在区公安局拍照，并且现场办理，预计5个工作日可办结。"
+  utter_noworries:
+    - text: "很高兴为您服务，祝您生活愉快"
+  utter_ask_continue:
+    - text: "需要继续吗?"
+  utter_wrong_local_person:
+    - text: "您的表述可能有些问题，请问您是本地人还是外地人?"
+  utter_wrong_person:
+    - text: "您的表述可能有些问题，请问您是本人还是委托人?"
+  utter_wrong_book:
+    - text: "您的表述可能有些问题, 请问您是带了居住证还是户口本?"
+  utter_default:
+    - text: "不好意思，我无法解析您的意思，您可以试着说些其他的"
+  utter_greet:
+    - text: "您好，我是智慧政务助理小泰! 可以给您提供办理身份证的服务！"
+  utter_iamabot:
+    - text: "我是泰豪科技制造的机器人小泰，很高兴为您服务"
+  utter_restart:
+    - text: "重启中"
+
+actions:
+- validate_restaurant_form
+
+
+forms:
+  event_form:
+    book:
+    - entity: book
+      type: from_entity
+      not_intent: chitchat
+    country_person:
+    - entity: country_person
+      type: from_entity
+      intent: [inform, request_restaurant]
+    local_person:
+    - entity: local_person
+      type: from_entity
+    person:
+    - entity: person
+      type: from_entity
+
+
+session_config:    # 会话配置
+  session_expiration_time: 60  # value in minutes   # 60秒无输入将重启会话
+  carry_over_slots_to_new_session: true             # 新的会话拷贝已填的槽值

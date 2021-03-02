@@ -1,0 +1,132 @@
+version: "2.0"
+nlu:
+- synonym: 本地人
+  examples: |
+    - 当地人
+    - 本地的
+    - 当地的
+
+- synonym: 本人
+  examples: |
+    - 自己
+    - 亲自
+
+- synonym: 中国人
+  examples: |
+    - 国内的
+    - 中国的
+
+- synonym: 外国人
+  examples: |
+    - 老外
+
+- synonym: 居住证
+  examples: |
+    - 暂住证
+    - 居民证
+
+- intent: greet
+  examples: |
+    - 你好
+    - Hello
+    - Hi
+    - 小泰你好
+    - 你好小泰
+    - 早上好
+    - 您好
+    - 你好啊
+
+- intent: apply_event
+  examples: |
+    - 我要办身份证
+    - 办张身份证，[外地人](local_person)
+    - 办张身份证，[本地人](local_person)
+    - 外地户口如何办理身份证
+    - 怎么办理身份证
+    - 如何办身份证
+    - 在[南京](city)，怎么办身份证
+    - [上海](city)，[本地人](local_person)怎么办身份证
+    - 在[上海](city)，[外地人](local_person)怎么办身份证
+    - [上海](city)，只有[居住证](book)能办身份证吗
+    - 办身份证需要什么材料
+    - 办身份证要带什么材料
+    - [当地人](local_person)，办身份证
+    - 我替人办身份证，怎么弄
+    - 身份证几天能下来
+    - [老外](country_person)怎么办身份证
+    - [外国人](country_person)怎么办身份证
+    - [中国人](country_person)，在海外生活，怎么办身份证
+    - 带了[居住证](book)，能办身份证吗
+    - 带了[户口本](book)，能办身份证吗
+    - 忘带[户口本](book)了，能办身份证吗
+    - 忘带[居住证](book)了，能办身份证吗
+    - [本人](person)办身份证，怎么弄
+    - [委托人](person)办身份证，怎么弄
+
+
+- intent: affirm
+  examples: |
+    - 是的
+    - 嗯嗯
+    - 是这样呢
+    - 对，是的
+    - 嗯，您说的对
+    - 嗯，是的
+    - 是的
+    - 对的
+
+- intent: deny
+  examples: |
+    - 不要
+    - 不需要
+    - 不需要，谢谢
+    - 不用
+    - 滚
+    - 不要不要
+    - 不需要，好吧
+
+- intent: inform
+  examples: |
+    - 亲，办理身份证不用收费噢
+    - 亲，办身份证不收费的
+    - 身份证是免费办理的
+
+- intent: thankyou
+  examples: |
+    - 谢谢
+    - 谢啦
+    - 多谢
+    - 感谢
+    - 谢谢小泰
+    - 好的，感谢感谢
+    - 好的，谢谢
+
+- intent: chitchat
+  examples: |
+    - 你们老板是谁?
+    - 你的主人是谁
+    - 你是哪个公司的
+    - 你是哪个公司造的
+    - 你的父母是谁
+
+- intent: stop
+  examples: |
+    - 你帮不了我
+    - 你没啥用，帮不了我啊
+    - 你啥也不会啊
+    - 好了，我不想说了
+    - 够了，你到底会啥
+
+- intent: bot_challenge
+  examples: |
+    - 你是机器人?
+    - 你是真人吗?
+    - 我是在和一个机器人说话吗?
+    - 我是在和真人说话吗?
+
+- intent: who_are_u
+  examples: |
+    - 你谁啊?
+    - 哪位
+    - 你是谁
+    - 你叫什么名字

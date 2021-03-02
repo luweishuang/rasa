@@ -1,3 +1,6 @@
+self/event/models
+self/event/data/total_word_feature_extractor_zh.dat
+self/en/models
 *~
 *pyc
 *.DS_Store

@@ -1,0 +1,17 @@
+language: "zh"
+
+pipeline:
+  - name: "MitieNLP"    # 初始化mitie结构。每个mitie组件都依赖于此，因此应该将其放在任何使用mitie组件的每个管道(pipline)的开头
+    model: "data/total_word_feature_extractor_zh.dat"
+  - name: "JiebaTokenizer"
+  - name: "MitieEntityExtractor"
+  - name: "EntitySynonymMapper"
+  # - name: "RegexFeaturizer"
+  - name: "MitieFeaturizer"
+  - name: "SklearnIntentClassifier"
+
+policies:
+  - name: TEDPolicy
+    epochs: 100
+  - name: AugmentedMemoizationPolicy
+  - name: RulePolicy

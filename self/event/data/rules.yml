@@ -1,0 +1,41 @@
+version: "2.0"
+rules:
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Thank you
+    steps:
+      - intent: thankyou
+      - action: utter_noworries
+
+  - rule: Bot challenge
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: Chitchat
+    steps:
+      - intent: chitchat
+      - action: utter_default
+
+  - rule: who are you
+    steps:
+      - intent: who_are_u
+      - action: utter_iamabot
+
+  - rule: activate event form
+    steps:
+      - intent: apply_event
+      - action: event_form
+      - active_loop: event_form
+
+  - rule: submit form
+    condition:
+    - active_loop: event_form
+    steps:
+      - action: event_form
+      - active_loop: null
+      - action: utter_submit
+      - action: utter_slots_values_local
