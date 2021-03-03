@@ -1,0 +1,222 @@
+version: "2.0"
+intents:
+  - marriage_survey              # 4次
+  - back_home                    # 4次
+  - open_app                     # request: app_name        15次
+  - query_employee_info          # request: staff_name      7次
+  - query_employee_examinations  # request: staff_name      5次
+  - call_staff                   # request: staff_name      6次
+  - query_cardinfo               # request: station_name    6次
+  - query_station_info           # request: station_name    4次
+  - query_electricity_bill       # request: station_name    7次
+  - query_station_state          # request: station_name    6次
+  - query_crew_power             # request: station_name, crew_name     5次
+  - query_busbar_brokeninfo      # request: station_name, busbar        5次
+  - query_weather                # request: city, data                  14次
+  - query_loadinfo               # request: station_name, busbar        9次
+  - query_curveinfo              # request: station_name, crew_name, curve_type   5次
+  - query_riskinfo               # request: city, data, risk_type       10次
+  - greet                           # 11次
+  - deny                            # 7次
+  - thankyou                        # 7次
+  - stop                            # 5次
+  - bot_challenge                   # 4次
+  - who_are_u                       # 4次
+
+entities:
+  - city               # 城市名  16次
+  - data               # 日期    18次
+  - person_name        # 人名    15次
+  - app_name           # 应用名   12次
+  - station_name       # 厂站名      安各庄  安顺站 茂名站 东坡站   28次
+  - busbar             # 母线名称     一母线，一号母线.....四母线   9次
+  - crew_name          # 机组名     132风机  远景61风机  1号风机   7次
+  - curve_type         # 曲线类型     电压曲线  有功功率曲线        4次
+  - risk_type          # 风险类型     负荷损失风险  电压越限风险     5次
+
+slots:
+  city_name:
+    type: text
+    influence_conversation: false   # 不影响对话流程
+    auto_fill: false
+  cur_data:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  staff_name:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  app_name:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  station_name:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  busbar_name:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  crew_name:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  curve_type:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+  risk_type:
+    type: text
+    influence_conversation: false
+    auto_fill: false
+
+responses:
+  utter_noworries:
+  - text: "很高兴为您服务，祝您生活愉快"
+  utter_ask_continue:
+  - text: "需要继续吗?"
+  utter_marriage_survey:
+    - text: "已为您打开婚姻问卷调查"
+  utter_back_home:
+    - text: "已为您返回主菜单"
+  utter_query_riskinfo_slots_values:
+    - text: "您要查询的是:{city_name}{cur_data}的{risk_type},正在为您查询，稍后将告知您查询结果"
+  utter_query_curveinfo_slots_values:
+  - text: "您要查询的是:{station_name}{crew_name}的{curve_type},正在为您查询，稍后将告知您查询结果"
+  utter_ask_staff_name:
+    - text: "请输入员工姓名"
+  utter_ask_station_name:
+  - text: "请输入您要查询的厂站名"
+  utter_ask_city_name:
+  - text: "请问您要查询哪个城市的"
+  utter_ask_cur_data:
+  - text: "请问您要查询哪一天的"
+  utter_ask_risk_type:
+  - text: "请问您要查询的是负荷损失风险还是电压越限风险？"
+  utter_ask_curve_type:
+  - text: "请问您要查询的是电压曲线还是有功功率曲线？"
+  utter_ask_crew_name:
+  - text: "请输入您要查询的机组名"
+  utter_ask_busbar_name:
+  - text: "请输入您要查询的母线名"
+
+  utter_wrong_local_person:
+    - text: "您的表述可能有些问题，请问您是本地人还是外地人?"
+  utter_default:
+    - text: "不好意思，我无法解析您的意思，您可以试着说些其他的"
+  utter_greet:
+    - text: "您好，我是智慧政务助理小泰! 可以给您提供办理身份证的服务！"
+  utter_iamabot:
+    - text: "我是泰豪科技制造的机器人小泰，很高兴为您服务"
+  utter_restart:
+    - text: "重启中"
+
+actions:
+- validate_query_riskinfo_form
+- validate_query_curveinfo_form
+- validate_query_weather_form
+- validate_query_crew_power_form
+- validate_query_loadinfo_form
+- validate_query_busbar_brokeninfo_form
+- validate_open_app_form
+- validate_query_employee_info_form
+- validate_query_employee_examinations_form
+- validate_call_staff_form
+- validate_query_cardinfo_form
+- validate_query_station_info_form
+- validate_query_electricity_bill_form
+- validate_query_station_state_form
+
+
+forms:
+  query_riskinfo_form:
+    city_name:
+    - entity: city
+      type: from_entity
+    cur_data:
+    - entity: data
+      type: from_entity
+    risk_type:
+    - entity: risk_type
+      type: from_entity
+    - type: from_text
+      intent: [query_riskinfo]
+  query_curveinfo_form:
+    station_name:
+    - entity: station_name
+      type: from_entity
+    crew_name:
+    - entity: crew_name
+      type: from_entity
+    curve_type:
+    - entity: curve_type
+      type: from_entity
+    - type: from_text
+      intent: [query_curveinfo]
+  query_weather_form:
+    city_name:
+    - entity: city
+      type: from_entity
+    cur_data:
+    - entity: data
+      type: from_entity
+  query_crew_power_form:
+    station_name:
+    - entity: station_name
+      type: from_entity
+    crew_name:
+    - entity: crew_name
+      type: from_entity
+  query_loadinfo_form:
+    station_name:
+    - entity: station_name
+      type: from_entity
+    busbar_name:
+    - entity: busbar
+      type: from_entity
+  query_busbar_brokeninfo_form:
+    station_name:
+    - entity: station_name
+      type: from_entity
+    busbar_name:
+    - entity: busbar
+      type: from_entity
+  open_app_form:
+    app_name:
+    - entity: app_name
+      type: from_entity
+  query_employee_info_form:
+    staff_name:
+    - entity: person_name
+      type: from_entity
+  query_employee_examinations_form:
+    staff_name:
+    - entity: person_name
+      type: from_entity
+  call_staff_form:
+    staff_name:
+    - entity: person_name
+      type: from_entity
+  query_cardinfo_form:
+    station_name:
+    - entity: station_name
+      type: from_entity
+  query_station_info_form:
+    station_name:
+    - entity: station_name
+      type: from_entity
+  query_electricity_bill_form:
+    station_name:
+    - entity: station_name
+      type: from_entity
+  query_station_state_form:
+    station_name:
+    - entity: station_name
+      type: from_entity
+
+
+session_config:    # 会话配置
+  session_expiration_time: 60  # value in minutes   # 60秒无输入将重启会话
+  carry_over_slots_to_new_session: true             # 新的会话拷贝已填的槽值

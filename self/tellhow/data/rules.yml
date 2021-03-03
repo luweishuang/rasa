@@ -1,0 +1,59 @@
+version: "2.0"
+rules:
+  - rule: Greet user
+    steps:
+      - intent: greet
+      - action: utter_greet
+
+  - rule: Thank you
+    steps:
+      - intent: thankyou
+      - action: utter_noworries
+
+  - rule: Bot challenge
+    steps:
+      - intent: bot_challenge
+      - action: utter_iamabot
+
+  - rule: who are you
+    steps:
+      - intent: who_are_u
+      - action: utter_iamabot
+
+  - rule: marriage survey
+    steps:
+    - intent: marriage_survey
+    - action: utter_marriage_survey
+
+  - rule: back home
+    steps:
+    - intent: back_home
+    - action: utter_back_home
+
+  - rule: activate query riskinfo
+    steps:
+      - intent: query_riskinfo
+      - action: query_riskinfo_form
+      - active_loop: query_riskinfo_form
+
+  - rule: submit query riskinfo form
+    condition:
+    - active_loop: query_riskinfo_form
+    steps:
+      - action: query_riskinfo_form
+      - active_loop: null
+      - action: utter_query_riskinfo_slots_values
+
+  - rule: activate query curveinfo
+    steps:
+      - intent: query_curveinfo
+      - action: query_curveinfo_form
+      - active_loop: query_curveinfo_form
+
+  - rule: submit query curveinfo form
+    condition:
+    - active_loop: query_curveinfo_form
+    steps:
+      - action: query_curveinfo_form
+      - active_loop: null
+      - action: utter_query_curveinfo_slots_values

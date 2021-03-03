@@ -1,6 +1,8 @@
 self/event/models
 self/event/data/total_word_feature_extractor_zh.dat
 self/en/models
+self/tellhow/models
+self/tellhow/data/total_word_feature_extractor_zh.dat
 *~
 *pyc
 *.DS_Store

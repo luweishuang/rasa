@@ -1,0 +1,223 @@
+version: "2.0"
+nlu:
+- synonym: 中国人
+  examples: |
+    - 国内的
+    - 中国的
+
+- intent: greet
+  examples: |
+    - 你好
+    - Hello
+    - Hi
+    - 小泰你好
+    - 你好小泰
+    - 早上好
+    - 您好
+    - 你好啊
+    - 下午好
+    - 晚上好
+    - 你好，美女
+
+- intent: open_app
+  examples: |
+    - 打开应用
+    - 帮我打开应用
+    - 给我打开应用
+    - 给我打开[有道笔记](app_name)
+    - 打开[喜马拉雅](app_name)
+    - 打开[小度在家](app_name)app
+    - 打开[网易云音乐](app_name)
+    - 打开[泰豪云](app_name)
+    - 打开[微信](app_name)
+    - 打开[樊登读书](app_name)
+    - 打开[58同城](app_name)应用
+    - 打开[招商银行](app_name)软件
+    - 打开[淘宝](app_name)应用
+    - 打开[支付宝](app_name)app
+    - 打开[拼多多](app_name)
+
+
+- intent: query_employee_info
+  examples: |
+    - 查询员工信息
+    - 查询[皮馥婵](person_name)的个人信息
+    - [皮馥婵](person_name)的详细信息
+    - [李宏昂](person_name)的详细信息
+    - [游华斌](person_name)的个人信息
+    - 查一下[汪洋](person_name)的个人信息
+    - 帮我看一下[温家宝](person_name)的详细信息
+
+- intent: query_crew_power
+  examples: |
+    - 查询[1号风机](crew_name)的日发电量报表
+    - 查询机组日电量报表
+    - [东坡站](station_name)[132风机](crew_name)的日发电量报表
+    - [安顺站](station_name)[远景61风机](crew_name)的日发电量报表
+    - [安各庄](station_name)[1号风机](crew_name)的日发电量报表
+
+- intent: marriage_survey
+  examples: |
+    - 开启婚姻问卷调查
+    - 婚姻问卷调查
+    - 开始婚姻问卷调查
+    - 打开婚姻问卷调查
+
+- intent: query_riskinfo
+  examples: |
+    - 查询地区的风险结果
+    - 查询风险情况
+    - 查询[北京](city)的风险情况
+    - 查询[长沙](city)的风险结果
+    - 查一下[深圳市](city)[2月11日](data)的风险情况
+    - 查询[杭州](city)[昨天](data)的[负荷损失风险](risk_type)
+    - 查询[南京](city)[3月1号](data)的[电压越限风险](risk_type)
+    - [上海](city)[上周六](data)的[负荷损失风险](risk_type)
+    - 查询[江苏](city)[周五](data)的[电压越限风险](risk_type)
+    - 查询[华东](city)[周末](data)的[负荷损失风险](risk_type)
+
+- intent: query_cardinfo
+  examples: |
+    - 卡片查询
+    - 查询卡片信息
+    - 查一下[东坡站](station_name)的卡片信息
+    - 查一下[安顺站](station_name)的卡片
+    - 看一下[茂名站](station_name)的卡片信息
+    - [安各庄](station_name)的卡片信息
+
+- intent: query_loadinfo
+  examples: |
+    - 查询厂站母线负荷
+    - 看一下母线负荷
+    - 查一下[四母线](busbar)的负荷
+    - 查询[东坡站](station_name)的负荷情况
+    - [安各庄](station_name)[四母线](busbar)的负荷信息
+    - [安顺站](station_name)[一号母线](busbar)的负荷如何
+    - 查询[茂名站](station_name)[三母线](busbar)的负荷信息
+    - [东坡站](station_name)[二母线](busbar)的负荷情况
+    - [安各庄](station_name)[三号母线](busbar)的负荷
+
+- intent: query_employee_examinations
+  examples: |
+    - 员工考试情况统计
+    - [黄睿](person_name)的考试情况
+    - 查询[于思远](person_name)的考试信息
+    - 查询[王道途](person_name)的考试信息
+    - 看一下[李白](person_name)的考试信息
+
+- intent: call_staff
+  examples: |
+    - 电话通知员工
+    - 电话通知[陆为霜](person_name)
+    - 打电话通知[习近平](person_name)
+    - 打电话通知[李克强](person_name)
+    - 电话通知[王岐山](person_name)
+    - 打电话通知[季建业](person_name)
+
+- intent: query_weather
+  examples: |
+    - 查询天气
+    - [南京](city)[3月1号](data)的天气
+    - [暨南](city)[明天](data)冷吗
+    - [上海](city)[昨天](data)下雨了吗
+    - [长沙](city)[明天](data)需要穿羽绒服吗
+    - [北京](city)[昨天](data)有雾霾吗
+    - [哈尔滨](city)[昨天](data)下雪了吗
+    - [齐齐哈尔](city)[明天](data)是晴天吗
+    - [昆明](city)[明天](data)有雨吗
+    - [明天](data)天气
+    - [后天](data)天气
+    - 一周天气查询
+    - [后天](data)天气冷吗
+    - [周六](data)适合出去玩吗
+
+- intent: back_home
+  examples: |
+    - 返回主页
+    - 返回主菜单
+    - 返回主界面
+    - 返回首页
+
+- intent: query_curveinfo
+  examples: |
+    - 查询机组曲线信息
+    - 查询[安顺站](station_name)[1号风机](crew_name)的[电压曲线](curve_type)
+    - 查一下[茂名站](station_name)[3号风机](crew_name)的[有功功率曲线](curve_type)
+    - [东坡站](station_name)的[有功功率曲线](curve_type)
+    - [3号风机](crew_name)的[电压曲线](curve_type)
+
+- intent: query_station_info
+  examples: |
+    - 查询厂站信息
+    - 查询[安顺站](station_name)信息
+    - 查一下[茂名站](station_name)的信息
+    - [东坡站](station_name)的信息
+
+- intent: query_electricity_bill
+  examples: |
+    - 查询电费
+    - 我想查询一下电费余额
+    - 查一下电费余额
+    - 我想查一下电费
+    - [安顺站](station_name)电费余额
+    - [茂名站](station_name)电费信息
+    - 看一下[安各庄](station_name)的电费信息
+
+- intent: query_station_state
+  examples: |
+    - 开始进行[安顺站](station_name)设备状态核实
+    - 我想查询一下[东坡站](station_name)的设备状态
+    - 进行厂站设备状态核实
+    - 查一下厂站设备状态
+    - 核实[安各庄](station_name)设备状态
+    - 核实[茂名站](station_name)的设备状态
+
+- intent: query_busbar_brokeninfo
+  examples: |
+    - 开始进行[四母线](busbar)的故障信息的查询
+    - 查一下母线的故障信息
+    - 查询母线的故障记录
+    - 查询[安顺站](station_name)[一母线](busbar)的故障信息
+    - 查询[茂名站](station_name)[一号母线](busbar)的故障信息
+
+- intent: deny
+  examples: |
+    - 不要
+    - 不需要
+    - 不需要，谢谢
+    - 不用
+    - 滚
+    - 不要不要
+    - 不需要，好吧
+
+- intent: thankyou
+  examples: |
+    - 谢谢
+    - 谢啦
+    - 多谢
+    - 感谢
+    - 谢谢小泰
+    - 好的，感谢感谢
+    - 好的，谢谢
+
+- intent: stop
+  examples: |
+    - 你帮不了我
+    - 你没啥用，帮不了我啊
+    - 你啥也不会啊
+    - 好了，我不想说了
+    - 够了，你到底会啥
+
+- intent: bot_challenge
+  examples: |
+    - 你是机器人吗?
+    - 你是真人吗?
+    - 我是在和一个机器人说话吗?
+    - 我是在和真人说话吗?
+
+- intent: who_are_u
+  examples: |
+    - 你谁啊?
+    - 哪位
+    - 你是谁
+    - 你叫什么名字
