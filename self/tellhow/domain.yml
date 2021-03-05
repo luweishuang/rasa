@@ -5,12 +5,12 @@ intents:
   - open_app                     # request: app_name        15次
   - query_employee_info          # request: staff_name      7次
   - query_employee_examinations  # request: staff_name      5次
-  - call_staff                   # request: staff_name      6次
+  - call_staff                   # request: staff_name      9次
   - query_cardinfo               # request: station_name    6次
   - query_station_info           # request: station_name    4次
   - query_electricity_bill       # request: station_name    7次
   - query_station_state          # request: station_name    6次
-  - query_crew_power             # request: station_name, crew_name     5次
+  - query_crew_power             # request: station_name, crew_name     6次
   - query_busbar_brokeninfo      # request: station_name, busbar        5次
   - query_weather                # request: city, data                  14次
   - query_loadinfo               # request: station_name, busbar        9次
@@ -26,11 +26,11 @@ intents:
 entities:
   - city               # 城市名  16次
   - data               # 日期    18次
-  - person_name        # 人名    15次
+  - person_name        # 人名    18次
   - app_name           # 应用名   12次
   - station_name       # 厂站名      安各庄  安顺站 茂名站 东坡站   28次
   - busbar             # 母线名称     一母线，一号母线.....四母线   9次
-  - crew_name          # 机组名     132风机  远景61风机  1号风机   7次
+  - crew_name          # 机组名     132风机  远景61风机  1号风机   8次
   - curve_type         # 曲线类型     电压曲线  有功功率曲线        4次
   - risk_type          # 风险类型     负荷损失风险  电压越限风险     5次
 

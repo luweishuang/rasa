@@ -4,7 +4,7 @@ from rasa.nlu.model import Interpreter
 import json
 
 component_builder = ComponentBuilder()
-model_path1 = "/Users/psc/code/rasa/self/tellhow/models/"
+model_path1 = "models/"
 
 
 app = Flask(__name__)

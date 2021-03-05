@@ -13,18 +13,28 @@ def as_pipeline(*components):
     return [{"name": c} for c in components]
 
 
-async def train_persist_load_with_composite_entities(classifier_params, component_builder, model_path):
-    pipeline = as_pipeline("MitieNLP", "JiebaTokenizer", "MitieEntityExtractor",
-                           "MitieFeaturizer", "SklearnIntentClassifier")
-    assert pipeline[4]["name"] == "SklearnIntentClassifier"
-    pipeline[4].update(classifier_params)
+async def train_persist_load_with_composite_entities(component_builder, model_path):
+    # 实体提取 + 意图分类
+    # classifier_params = {RANDOM_SEED: 1, EPOCHS: 1, BILOU_FLAG: False}
+    # pipeline = as_pipeline("MitieNLP", "JiebaTokenizer", "MitieEntityExtractor",
+    #                             "MitieFeaturizer", "SklearnIntentClassifier")
+    # 意图分类
+    # pipeline = as_pipeline("MitieNLP", "JiebaTokenizer", "MitieFeaturizer", "SklearnIntentClassifier")
+    # assert pipeline[3]["name"] == "SklearnIntentClassifier"
+    # pipeline[3].update(classifier_params)
+
+    pipeline = as_pipeline("MitieNLP", "JiebaTokenizer", "CountVectorsFeaturizer", "DIETClassifier")
+    # CountVectors_params = {"analyzer": "char_wb", "min_ngram": 1, "max_ngram": 4}
+    # pipeline[2].update(CountVectors_params)
+    # DIETClassifier_params = {"entity_recognition": False, "epochs": 3}
+    # pipeline[3].update(DIETClassifier_params)
 
     _config = RasaNLUModelConfig({"pipeline": pipeline, "language": "zh"})
 
     (trainer, trained, persisted_path) = await train(
         _config,
         path=model_path,
-        data="/Users/psc/code/rasa/self/tellhow/data/nlu.yml",
+        data="/Users/psc/code/rasa/tests/nlu/classifiers/intents.yml",
         component_builder=component_builder,
     )
 
@@ -32,7 +42,7 @@ async def train_persist_load_with_composite_entities(classifier_params, componen
     assert trained.pipeline
     loaded = Interpreter.load(persisted_path, component_builder)
     assert loaded.pipeline
-    text = "感冒发烧了怎么办"
+    text = "南京明天天气如何"
     print("--------------------------------------------------")
     print(trained.parse(text))
     print("++++++++++++++++++++++++++++++++++++++++++++++++++")
@@ -44,8 +54,7 @@ async def train_persist_load_with_composite_entities(classifier_params, componen
 
 if __name__ == '__main__':
     # test_train_model_checkpointing_peter()
-    classifier_params = {RANDOM_SEED: 1, EPOCHS: 1, BILOU_FLAG: False}
     loop = asyncio.get_event_loop()
     res = loop.run_until_complete(
-        train_persist_load_with_composite_entities(classifier_params, ComponentBuilder(), "/Users/psc/code/rasa/self/tellhow/models"))
+        train_persist_load_with_composite_entities(ComponentBuilder(), "models"))
     loop.close()

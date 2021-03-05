@@ -16,7 +16,8 @@ class MitieNLP(Component):
     defaults = {
         # name of the language model to load - this contains
         # the MITIE feature extractor
-        "model": os.path.join("data", "total_word_feature_extractor.dat")
+        # "model": os.path.join("data", "total_word_feature_extractor_zh.dat")
+        "model": "/Users/psc/code/rasa/self/tellhow/data/total_word_feature_extractor_zh.dat"
     }
 
     def __init__(
