@@ -1,38 +1,36 @@
 version: "2.0"
 intents:
-  - marriage_survey              # 4次
-  - back_home                    # 4次
-  - open_app                     # request: app_name        15次
-  - query_employee_info          # request: staff_name      7次
-  - query_employee_examinations  # request: staff_name      5次
-  - call_staff                   # request: staff_name      9次
-  - query_cardinfo               # request: station_name    6次
-  - query_station_info           # request: station_name    4次
-  - query_electricity_bill       # request: station_name    7次
-  - query_station_state          # request: station_name    6次
-  - query_crew_power             # request: station_name, crew_name     6次
-  - query_busbar_brokeninfo      # request: station_name, busbar        5次
-  - query_weather                # request: city, data                  14次
-  - query_loadinfo               # request: station_name, busbar        9次
-  - query_curveinfo              # request: station_name, crew_name, curve_type   5次
-  - query_riskinfo               # request: city, data, risk_type       10次
-  - greet                           # 11次
-  - deny                            # 7次
-  - thankyou                        # 7次
-  - stop                            # 5次
-  - bot_challenge                   # 4次
-  - who_are_u                       # 4次
+  - marriage_survey
+  - back_home
+  - open_app                     # request: app_name
+  - query_employee_info          # request: staff_name
+  - query_employee_examinations  # request: staff_name
+  - call_staff                   # request: staff_name
+  - query_cardinfo               # request: station_name
+  - query_station_info           # request: station_name
+  - query_electricity_bill       # request: station_name
+  - query_station_state          # request: station_name
+  - query_crew_power             # request: station_name, crew_name
+  - query_busbar_brokeninfo      # request: station_name, busbar
+  - query_weather                # request: city, data
+  - query_loadinfo               # request: station_name, busbar
+  - query_curveinfo              # request: station_name, crew_name, curve_type
+  - query_riskinfo               # request: city, data, risk_type
+  - greet
+  - deny
+  - thankyou
+  - stop
+  - bot_challenge
+  - who_are_u
 
 entities:
-  - city               # 城市名  16次
-  - data               # 日期    18次
-  - person_name        # 人名    18次
-  - app_name           # 应用名   12次
-  - station_name       # 厂站名      安各庄  安顺站 茂名站 东坡站   28次
-  - busbar             # 母线名称     一母线，一号母线.....四母线   9次
-  - crew_name          # 机组名     132风机  远景61风机  1号风机   8次
-  - curve_type         # 曲线类型     电压曲线  有功功率曲线        4次
-  - risk_type          # 风险类型     负荷损失风险  电压越限风险     5次
+  - city               # 城市名
+  - data               # 日期
+  - person_name        # 人名
+  - app_name           # 应用名
+  - digist
+  - curve_type         # 曲线类型     电压曲线  有功功率曲线
+  - risk_type          # 风险类型     负荷损失风险  电压越限风险
 
 slots:
   city_name:
@@ -51,15 +49,15 @@ slots:
     type: text
     influence_conversation: false
     auto_fill: false
-  station_name:
+  station_name:              # 厂站名      安各庄  安顺站 茂名站 东坡站 重庆
     type: text
     influence_conversation: false
     auto_fill: false
-  busbar_name:
+  busbar_name:               # 母线名称     一母线，一号母线.....四母线
     type: text
     influence_conversation: false
     auto_fill: false
-  crew_name:
+  crew_name:                 # 母线名称     一母线，一号母线.....四母线
     type: text
     influence_conversation: false
     auto_fill: false

@@ -1,31 +1,14 @@
 version: "2.0"
 nlu:
-- synonym: 中国人
+- lookup: curve_type
   examples: |
-    - 国内的
-    - 中国的
+    - 电压曲线
+    - 有功功率曲线
 
-- lookup: staff_name
+- lookup: risk_type
   examples: |
-    - 皮仕蝉
-    - 游华斌
-    - 蒋成林
-    - 徐鹏
-    - 高植涵
-
-- intent: greet
-  examples: |
-    - 你好
-    - Hello
-    - Hi
-    - 小泰你好
-    - 你好小泰
-    - 早上好
-    - 您好
-    - 你好啊
-    - 下午好
-    - 晚上好
-    - 你好，美女
+    - 负荷损失风险
+    - 电压越限风险
 
 - intent: open_app
   examples: |
@@ -76,13 +59,13 @@ nlu:
 
 - intent: query_crew_power
   examples: |
-    - 查询[一](digist)号风机[上周二](data)的日发电量报表
-    - 查询[五六](digist)机组日发电量报表
+    - 查询[1](digist)号风机[上周二](data)的日发电量报表
+    - 查询[56](digist)机组日发电量报表
     - 查询[安顺](city)站[三月五号](data)日电量报表
-    - [东坡](city)站[一百三十二](digist)风机[昨天](data)的日发电量报表
-    - [安顺](city)站远景[六十一](crew_name)号风机的日发电量报表
-    - [安各庄](city)[一](digist)号风机的日发电量报表
-    - 看一下[五十六](digist)风机[今天](data)的日发电量报表
+    - [东坡](city)站[132](digist)风机[昨天](data)的日发电量报表
+    - [安顺](city)站远景[六十一](digist)号风机的日发电量报表
+    - [安各庄](city)[1](digist)号风机的日发电量报表
+    - 看一下[56](digist)风机[今天](data)的日发电量报表
 
 - intent: query_riskinfo
   examples: |
@@ -101,13 +84,13 @@ nlu:
   examples: |
     - 查询厂站母线负荷
     - 看一下母线负荷
-    - 查一下[四](digist)号母线的负荷
+    - 查一下[4](digist)号母线的负荷
     - 查询[东坡](city)站的负荷情况
     - [安各庄](city)[四](digist)母线的负荷信息
-    - [安顺](city)站[一](digist)号母线的负荷如何
+    - [安顺](city)站[1](digist)号母线的负荷如何
     - 查询[茂名](city)站[三](digist)母线的负荷信息
-    - [东坡](city)站[二](digist)母线的负荷情况
-    - [安各庄](city)[三](digist)号母线的负荷
+    - [东坡](city)站[2](digist)母线的负荷情况
+    - [重庆](city)[5](digist)号母线的负荷
 
 - intent: query_weather
   examples: |
@@ -136,10 +119,10 @@ nlu:
 - intent: query_curveinfo
   examples: |
     - 查询机组曲线信息
-    - 查询[安顺站](station_name)[1号风机](crew_name)的[电压曲线](curve_type)
-    - 查一下[茂名站](station_name)[3号风机](crew_name)的[有功功率曲线](curve_type)
-    - [东坡站](station_name)的[有功功率曲线](curve_type)
-    - [3号风机](crew_name)的[电压曲线](curve_type)
+    - 查询[安顺](city)站[一](digist)号风机的[电压曲线](curve_type)
+    - 查一下[茂名](city)站[3](digist)号风机的[有功功率曲线](curve_type)
+    - [东坡](city)站的[有功功率曲线](curve_type)
+    - [3](digist)号风机的[电压曲线](curve_type)
 
 - intent: query_electricity_bill
   examples: |
@@ -147,27 +130,36 @@ nlu:
     - 我想查询一下电费余额
     - 查一下电费余额
     - 我想查一下电费
-    - [安顺站](station_name)电费余额
-    - [茂名站](station_name)电费信息
-    - 看一下[安各庄](station_name)的电费信息
+    - [安顺](city)站电费余额
+    - [茂名](city)站电费信息
+    - 看一下[安各庄](city)的电费信息
 
 - intent: query_station_state
   examples: |
-    - 开始进行[安顺站](station_name)设备状态核实
-    - 我想查询一下[东坡站](station_name)的设备状态
+    - 开始进行[南京](city)站设备状态核实
+    - 我想查询一下[济南](city)站的设备状态
     - 进行厂站设备状态核实
     - 查一下厂站设备状态
-    - 核实[安各庄](station_name)设备状态
-    - 核实[茂名站](station_name)的设备状态
+    - 核实[石家庄](city)设备状态
+    - 核实[昆明](city)站的设备状态
 
 - intent: query_busbar_brokeninfo
   examples: |
-    - 开始进行[四母线](busbar)的故障信息的查询
+    - 开始进行[4](digist)母线的故障信息的查询
     - 查一下母线的故障信息
     - 查询母线的故障记录
-    - 查询[安顺站](station_name)[一母线](busbar)的故障信息
-    - 查询[茂名站](station_name)[一号母线](busbar)的故障信息
+    - 查询[安顺](city)站[一](digist)母线的故障信息
+    - 查询[茂名](city)站[一](digist)号母线的故障信息
 
+- intent: greet
+  examples: |
+    - 你好
+    - 您好
+    - 早上好
+    - 你好，美女
+    - 中午好
+    - 晚上好
+    
 - intent: confirm
   examples: |
     - 是的

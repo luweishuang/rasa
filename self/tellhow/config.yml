@@ -1,14 +1,18 @@
 language: "zh"
 
 pipeline:
-  - name: "MitieNLP"    # 初始化mitie结构。每个mitie组件都依赖于此，因此应该将其放在任何使用mitie组件的每个管道(pipline)的开头
+  - name: "MitieNLP"
     model: "data/total_word_feature_extractor_zh.dat"
   - name: "JiebaTokenizer"
-  - name: "MitieEntityExtractor"
-  # - name: "EntitySynonymMapper"
-  # - name: "RegexFeaturizer"
+    dictionary_path: "user_dict.txt"
+  - name: "CRFEntityExtractor"
+  - name: "EntitySynonymMapper"
+  - name: "RegexFeaturizer"
   - name: "MitieFeaturizer"
   - name: "SklearnIntentClassifier"
+
+# 若训练数据中使用了查找表，那么在pipeline中需要有 DIETClassifier 或者  CRFEntityExtractor 来使用它
+# CRFEntityExtractor vs MitieEntityExtractor
 
 policies:
   - name: TEDPolicy
