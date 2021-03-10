@@ -5,7 +5,7 @@ pipeline:
     model: "data/total_word_feature_extractor_zh.dat"
   - name: "JiebaTokenizer"
     dictionary_path: "user_dict.txt"
-  - name: "CRFEntityExtractor"
+  - name: "CRFEntityExtractor"        # MitieEntityExtractor
   - name: "EntitySynonymMapper"
   - name: "RegexFeaturizer"
   - name: "MitieFeaturizer"

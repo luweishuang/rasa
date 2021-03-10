@@ -28,7 +28,8 @@ entities:
   - data               # 日期
   - person_name        # 人名
   - app_name           # 应用名
-  - digist
+  - busbar_name        # 母线名称     1号母线, 4母线, 3#母线
+  - fans_name
   - curve_type         # 曲线类型     电压曲线  有功功率曲线
   - risk_type          # 风险类型     负荷损失风险  电压越限风险
 

@@ -4,11 +4,26 @@ nlu:
   examples: |
     - 电压曲线
     - 有功功率曲线
+    - 无功功率曲线
+    - 静态功率曲线
+    - 动态功率曲线
+    - 视在功率曲线
 
 - lookup: risk_type
   examples: |
-    - 负荷损失风险
+    - 失负荷风险
     - 电压越限风险
+    - 过负荷风险
+    - 过载风险
+    - 电压崩溃风险
+
+- regex: busbar
+  examples: |
+    - \d+号?#?母线
+
+- regex: fans
+  examples: |
+    - \d+号?#?风机
 
 - intent: open_app
   examples: |
@@ -59,13 +74,19 @@ nlu:
 
 - intent: query_crew_power
   examples: |
-    - 查询[1](digist)号风机[上周二](data)的日发电量报表
-    - 查询[56](digist)机组日发电量报表
+    - 查询[1号风机](fans_name)[上周二](data)的日发电量报表
+    - 查询[9#风机](fans_name)[上周二](data)的日发电量报表
+    - 查询机组日发电量报表
     - 查询[安顺](city)站[三月五号](data)日电量报表
-    - [东坡](city)站[132](digist)风机[昨天](data)的日发电量报表
-    - [安顺](city)站远景[六十一](digist)号风机的日发电量报表
-    - [安各庄](city)[1](digist)号风机的日发电量报表
-    - 看一下[56](digist)风机[今天](data)的日发电量报表
+    - [东坡](city)站[132风机](fans_name)[昨天](data)的日发电量报表
+    - [安顺](city)站远景[六十一号风机](fans_name)的日发电量报表
+    - [安各庄](city)[1号风机](fans_name)的日发电量报表
+    - 看一下[56风机](fans_name)[今天](data)的日发电量报表
+    - 看下[连云港](city)站的日发电量报表
+    - 看下[安各庄](city)[7月6号](data)的日发电量报表
+    - 查询[乌鲁木齐](city)[去年中秋节](data)的日发电量报表
+    - 查询[齐齐哈尔](city)[去年国庆第一天](data)的日发电量报表
+    - 查询[绥远](city)站[18号风机](fans_name)[元旦](data)的日发电量报表
 
 - intent: query_riskinfo
   examples: |
@@ -84,13 +105,14 @@ nlu:
   examples: |
     - 查询厂站母线负荷
     - 看一下母线负荷
-    - 查一下[4](digist)号母线的负荷
+    - 查一下[4号母线](busbar_name)的负荷
+    - 查询[93#母线](busbar_name)的负荷
     - 查询[东坡](city)站的负荷情况
-    - [安各庄](city)[四](digist)母线的负荷信息
-    - [安顺](city)站[1](digist)号母线的负荷如何
-    - 查询[茂名](city)站[三](digist)母线的负荷信息
-    - [东坡](city)站[2](digist)母线的负荷情况
-    - [重庆](city)[5](digist)号母线的负荷
+    - [安各庄](city)[四母线](busbar_name)的负荷信息
+    - [安顺](city)站[1号母线](busbar_name)的负荷如何
+    - 查询[茂名](city)站[3母线](busbar_name)的负荷信息
+    - [东坡](city)站[2母线](busbar_name)的负荷情况
+    - [重庆](city)[5号母线](busbar_name)的负荷
 
 - intent: query_weather
   examples: |
@@ -119,10 +141,12 @@ nlu:
 - intent: query_curveinfo
   examples: |
     - 查询机组曲线信息
-    - 查询[安顺](city)站[一](digist)号风机的[电压曲线](curve_type)
-    - 查一下[茂名](city)站[3](digist)号风机的[有功功率曲线](curve_type)
-    - [东坡](city)站的[有功功率曲线](curve_type)
-    - [3](digist)号风机的[电压曲线](curve_type)
+    - 查询[安顺](city)站[一号风机](fans_name)的[电压曲线](curve_type)
+    - 查一下[茂名](city)站[3号风机](fans_name)的[有功功率曲线](curve_type)
+    - [东坡](city)站的[静态功率曲线](curve_type)
+    - [143号风机](fans_name)的[无功功率曲线](curve_type)
+    - [50号风机](fans_name)的[动态功率曲线](curve_type)
+    - 看一下[50号风机](fans_name)的[视在功率曲线](curve_type)
 
 - intent: query_electricity_bill
   examples: |
@@ -136,7 +160,7 @@ nlu:
 
 - intent: query_station_state
   examples: |
-    - 开始进行[南京](city)站设备状态核实
+    - 开始进行[连云港](city)站设备状态核实
     - 我想查询一下[济南](city)站的设备状态
     - 进行厂站设备状态核实
     - 查一下厂站设备状态
@@ -145,11 +169,15 @@ nlu:
 
 - intent: query_busbar_brokeninfo
   examples: |
-    - 开始进行[4](digist)母线的故障信息的查询
+    - 开始进行[4母线](busbar_name)的故障信息的查询
     - 查一下母线的故障信息
     - 查询母线的故障记录
-    - 查询[安顺](city)站[一](digist)母线的故障信息
-    - 查询[茂名](city)站[一](digist)号母线的故障信息
+    - 查询[安顺](city)站[3母线](busbar_name)的故障信息
+    - 查询[茂名](city)站[1号母线](busbar_name)的故障信息
+    - 查询[深圳](city)站[11号母线](busbar_name)[2021年2月23号](data)的故障信息
+    - 查一下[[32号母线](busbar_name)[6月17号](data)的故障信息
+    - 查一下[昆明](city)站[2021年2月23号](data)的故障信息
+    - 查一下[华南](city)站[9月4号](data)的故障情况
 
 - intent: greet
   examples: |
